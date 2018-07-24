@@ -1,0 +1,12 @@
+﻿<script type="text/javascript">
+    var previewContainer = $('#page-content-wrapper');
+    var confirmUrl = '@Url.Action("GetReport")';
+
+    function loadReport(report,pagina) {
+        previewContainer.html('<p>Container...</p>');
+        previewContainer.load(confirmUrl, { reporte: report, page: pagina });
+    }
+
+</script>
+
+

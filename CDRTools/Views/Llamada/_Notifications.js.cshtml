@@ -1,0 +1,36 @@
+﻿<script type="text/javascript">
+    var previewContainer = $('#notificationModal #notificationPreview');
+    var confirmUrl = '@Url.Action("GetNotification")';
+    var redirectUrl = '@Url.Action("Index","Home")';
+
+    $(function () {
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                processData: false,
+                url: '@Url.Action("CargaLlamadas","Llamada")',
+                success: function (response) {
+                    if (response != null && response.success)
+                    {
+                        window.location = redirectUrl;
+                    }
+                    else
+                    {
+                        previewContainer.html('<p>Cargando mensaje…</p>');
+                        previewContainer.load(confirmUrl, { message: response.message });
+                        $('#notificationModal').modal({ backdrop: 'static', keyboard: false });
+                    }
+                },
+                error: function (response) {
+                    alert(error);
+                }
+            });
+    });
+
+    $(function () {
+        $("#notificationModal").on('click', "#closeModal", function () {
+            window.location = redirectUrl;
+        });
+    });
+</script>
+

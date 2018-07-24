@@ -1,0 +1,59 @@
+﻿@using CDRTools.Models
+@model IndexViewModel
+
+
+
+<div class="table-responsive">
+    <table class="table table-bordered ">
+        <tr>
+            <th>Hora Llamada</th>
+            <th>Numero Origen</th>
+            <th>Numero Destino</th>
+            <th>Duracion</th>
+        </tr>
+        @foreach (var llamada in Model.Llamadas)
+        {
+            <tr>
+                <td>@llamada.dateTimeOrigination</td>
+                <td>@llamada.callingPartyNumber</td>
+                <td>@llamada.originalCalledPartyNumber</td>
+                <td>@llamada.duration</td>
+            </tr>
+        }
+    </table>
+
+    <!-- pager -->
+    @if (Model.Pager.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li>
+                    <a href="~/Home/Index">First</a>
+                </li>
+                <li>
+                    <a href="~/Home/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                </li>
+            }
+
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                    <a href="javascript:loadReport('Informe 1',@page)">@page</a>
+                </li>}
+
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <li>
+                    <a href="~/Home/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                </li>
+                <li>
+                    <a href="~/Home/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+<div class="col-sm-2">
+    <div class="btn btn-default">@Html.ActionLink("Create PDF","CreateReport","Reporte")</div>
+</div>

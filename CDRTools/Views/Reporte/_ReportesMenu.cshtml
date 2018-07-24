@@ -1,0 +1,39 @@
+﻿<div id="wrapper">
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <span class="navbar-brand" aria-hidden="true"></span><font color="#337AB7"> Reportes</font>
+                </li>
+                <li>
+                    <a href="#informesSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><font color="#337AB7"> Informes</font></a>
+                    <ul class="collapse list-unstyled" id="informesSubmenu">
+                        <li class="custom-li"><a href="javascript:loadReport('Informe 1',1)">Informe 1</a></li>
+                        <li class="custom-li">@Html.ActionLink("Informe 2", "GetReporte", "Reporte")</li>
+                        <li class="custom-li">@Html.ActionLink("Informe 3", "GetReport", "Reporte", new {
+                                             page = 2
+                                             }, null)</li>
+                        <li class="custom-li">@Html.ActionLink("Informe 4", "Container", "Reporte", new { @class = "GetReportsLink" })</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#estadisticasSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span><font color="#337AB7"> Estadisticas</font></a>
+                    <ul class="collapse list-unstyled" id="estadisticasSubmenu">
+                        <li class="custom-li"><a href="#">Grafica 1</a></li>
+                        <li class="custom-li"><a href="#">Grafica 2</a></li>
+                        <li class="custom-li"><a href="#">Grafica 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <p>Container...</p>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+</div>
+<!-- /#wrapper -->

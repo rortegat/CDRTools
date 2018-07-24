@@ -1,0 +1,27 @@
+﻿<script type="text/javascript">
+$(document).ready(function () {
+    $('.GetReportsLink').on('click', function (e) {
+        e.preventDefault();
+        $.get('@Url.Action("Container")', function (result) {
+            $('#page-content-wrapper').html(result);
+        });
+    });
+});
+
+
+    $(function () {
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
+        });
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+    });
+
+
+</script>
+
